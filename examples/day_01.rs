@@ -25,7 +25,7 @@ fn parse_items() -> impl Iterator<Item = i32> {
     })
 }
 
-const ITEMS:&str = r#"11334
+const ITEMS: &str = r#"11334
 6264
 9318
 

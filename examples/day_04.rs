@@ -29,16 +29,23 @@ fn part_2() -> i32 {
     })
 }
 
-fn parse_input() -> impl Iterator<Item=Vec<RangeInclusive<i32>>> {
-    INPUT.lines().map(|line: &str| line.split(',').map(|range: &str| {
-        let temp = range.split('-').collect::<Vec<_>>();
-        let l = temp[0].parse::<i32>().unwrap();
-        let r = temp[1].parse::<i32>().unwrap();
-        l..=r
-    }).collect::<Vec<RangeInclusive<i32>>>())
+fn parse_input() -> impl Iterator<Item = Vec<RangeInclusive<i32>>> {
+    INPUT.lines().map(|line: &str| {
+        line.split(',')
+            .map(|range: &str| {
+                let temp = range.split('-').collect::<Vec<_>>();
+                let l = temp[0].parse::<i32>().unwrap();
+                let r = temp[1].parse::<i32>().unwrap();
+                l..=r
+            })
+            .collect::<Vec<RangeInclusive<i32>>>()
+    })
 }
 
-fn contains_part_1(iter1: impl Iterator<Item=i32>, iter2: impl Iterator<Item=i32> + RangeBounds<i32>) -> bool {
+fn contains_part_1(
+    iter1: impl Iterator<Item = i32>,
+    iter2: impl Iterator<Item = i32> + RangeBounds<i32>,
+) -> bool {
     let mut contains = true;
     for num in iter1 {
         if !iter2.contains(&num) {
@@ -48,7 +55,10 @@ fn contains_part_1(iter1: impl Iterator<Item=i32>, iter2: impl Iterator<Item=i32
     contains
 }
 
-fn contains_part_2(iter1: impl Iterator<Item=i32>, iter2: impl Iterator<Item=i32> + RangeBounds<i32>) -> bool {
+fn contains_part_2(
+    iter1: impl Iterator<Item = i32>,
+    iter2: impl Iterator<Item = i32> + RangeBounds<i32>,
+) -> bool {
     let mut contains = false;
     for num in iter1 {
         if iter2.contains(&num) {

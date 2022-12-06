@@ -1,4 +1,4 @@
-use anyhow::{Result};
+use anyhow::Result;
 
 fn main() -> Result<()> {
     println!("{}", part_1()?);
@@ -7,8 +7,7 @@ fn main() -> Result<()> {
 }
 
 fn part_1() -> Result<i32> {
-    EXAMPLE
-    ;
+    EXAMPLE;
     Ok(0)
 }
 

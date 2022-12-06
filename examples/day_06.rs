@@ -1,6 +1,6 @@
 #![feature(exclusive_range_pattern)]
 
-use anyhow::{Result};
+use anyhow::Result;
 
 fn main() -> Result<()> {
     println!("{}", solve(4)?);
@@ -15,13 +15,17 @@ fn solve(unique_sequence_length: usize) -> Result<i32> {
     for index in 0..length {
         let mut first_marker_characters = vec![];
         let mut unique = true;
-        INPUT.chars().skip(index).take(unique_sequence_length).for_each(|character| {
-            if !first_marker_characters.contains(&character) {
-                first_marker_characters.push(character);
-            } else {
-                unique = false;
-            }
-        });
+        INPUT
+            .chars()
+            .skip(index)
+            .take(unique_sequence_length)
+            .for_each(|character| {
+                if !first_marker_characters.contains(&character) {
+                    first_marker_characters.push(character);
+                } else {
+                    unique = false;
+                }
+            });
         if unique {
             result = (index + unique_sequence_length) as i32;
             break;

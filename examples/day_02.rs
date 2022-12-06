@@ -1,4 +1,4 @@
-use anyhow::{Result, anyhow};
+use anyhow::{anyhow, Result};
 
 fn main() -> Result<()> {
     println!("{}", part_1()?);
@@ -7,44 +7,48 @@ fn main() -> Result<()> {
 }
 
 fn part_1() -> Result<i32> {
-    parse_items().map(|line| {
-        let (l, r) = (line.chars().nth(0).unwrap(), line.chars().nth(2).unwrap());
-        let res = match (l, r) {
-            ('A', 'X') => 1 + 3,
-            ('B', 'X') => 1 + 0,
-            ('C', 'X') => 1 + 6,
-            ('A', 'Y') => 2 + 6,
-            ('B', 'Y') => 2 + 3,
-            ('C', 'Y') => 2 + 0,
-            ('A', 'Z') => 3 + 0,
-            ('B', 'Z') => 3 + 6,
-            ('C', 'Z') => 3 + 3,
-            _ => return Err(anyhow!("{} or {} wasn't a move",l,r))
-        };
-        Ok(res)
-    }).sum()
+    parse_items()
+        .map(|line| {
+            let (l, r) = (line.chars().nth(0).unwrap(), line.chars().nth(2).unwrap());
+            let res = match (l, r) {
+                ('A', 'X') => 1 + 3,
+                ('B', 'X') => 1 + 0,
+                ('C', 'X') => 1 + 6,
+                ('A', 'Y') => 2 + 6,
+                ('B', 'Y') => 2 + 3,
+                ('C', 'Y') => 2 + 0,
+                ('A', 'Z') => 3 + 0,
+                ('B', 'Z') => 3 + 6,
+                ('C', 'Z') => 3 + 3,
+                _ => return Err(anyhow!("{} or {} wasn't a move", l, r)),
+            };
+            Ok(res)
+        })
+        .sum()
 }
 
 fn part_2() -> Result<i32> {
-    parse_items().map(|line| {
-        let (l, r) = (line.chars().nth(0).unwrap(), line.chars().nth(2).unwrap());
-        let res = match (l, r) {
-            ('A', 'X') => 3 + 0,
-            ('B', 'X') => 1 + 0,
-            ('C', 'X') => 2 + 0,
-            ('A', 'Y') => 1 + 3,
-            ('B', 'Y') => 2 + 3,
-            ('C', 'Y') => 3 + 3,
-            ('A', 'Z') => 2 + 6,
-            ('B', 'Z') => 3 + 6,
-            ('C', 'Z') => 1 + 6,
-            _ => return Err(anyhow!("{} or {} wasn't a move",l,r))
-        };
-        Ok(res)
-    }).sum()
+    parse_items()
+        .map(|line| {
+            let (l, r) = (line.chars().nth(0).unwrap(), line.chars().nth(2).unwrap());
+            let res = match (l, r) {
+                ('A', 'X') => 3 + 0,
+                ('B', 'X') => 1 + 0,
+                ('C', 'X') => 2 + 0,
+                ('A', 'Y') => 1 + 3,
+                ('B', 'Y') => 2 + 3,
+                ('C', 'Y') => 3 + 3,
+                ('A', 'Z') => 2 + 6,
+                ('B', 'Z') => 3 + 6,
+                ('C', 'Z') => 1 + 6,
+                _ => return Err(anyhow!("{} or {} wasn't a move", l, r)),
+            };
+            Ok(res)
+        })
+        .sum()
 }
 
-fn parse_items() -> impl Iterator<Item=&'static str> {
+fn parse_items() -> impl Iterator<Item = &'static str> {
     GAMES.lines()
 }
 

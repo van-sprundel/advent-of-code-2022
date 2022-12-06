@@ -36,7 +36,7 @@ fn parse_crates(input: &str) -> Vec<Vec<char>> {
     stacks
 }
 
-fn parse_instructions(input: &str) -> impl Iterator<Item=Instruction> + '_ {
+fn parse_instructions(input: &str) -> impl Iterator<Item = Instruction> + '_ {
     input
         .lines()
         .filter(|line| !line.is_empty())
