@@ -1,6 +1,6 @@
+use anyhow::Result;
 use std::cell::RefCell;
 use std::rc::Rc;
-use anyhow::Result;
 
 struct Node {
     name: String,
