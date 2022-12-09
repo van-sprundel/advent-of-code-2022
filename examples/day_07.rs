@@ -69,6 +69,7 @@ fn parse_tree(input: &[&str]) -> Result<Rc<RefCell<Node>>> {
         }
         current
     });
+
     Ok(head)
 }
 
